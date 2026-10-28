@@ -1,0 +1,51 @@
+@import '@fontsource-variable/space-grotesk/wght.css';
+
+:root {
+  --canvas: #fdf8f5;
+  --panel: #fff5f3;
+  --card: #ffffff;
+  --ink: #3d080c;
+  --ink-soft: rgba(61, 8, 12, 0.62);
+  --red: #d81a24;
+  --live: #e50914;
+  --line: #f1ddd8;
+  --line-strong: #e8c8c1;
+  --shadow: 0 12px 32px -4px rgba(61, 8, 12, 0.08);
+  --font: 'Space Grotesk Variable', 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 22px;
+  -webkit-font-smoothing: antialiased;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px));
+  padding-block: env(safe-area-inset-top, 0px) max(24px, env(safe-area-inset-bottom, 0px));
+}
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.wrap { max-width: 1440px; margin-inline: auto; padding-inline: clamp(0px, 2.5vw, 28px); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 7px; background: var(--red); color: #fff; border-radius: 4px;
+  padding: 5px 9px; font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: 4px; text-decoration: none;
+  background: var(--red); color: #fff; padding: 11px 18px; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.btn:hover { background: var(--live); transform: translateY(-1px); box-shadow: 0 8px 24px -2px rgba(216, 26, 36, 0.25); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); box-shadow: none; }
+.btn.ghost:hover { background: var(--panel); border-color: var(--red); transform: none; }
+.btn svg { width: 14px; height: 14px; flex: none; }
+
+@media (prefers-reduced-motion: reduce) { .dot { animation: none; } .btn { transition: none; } }

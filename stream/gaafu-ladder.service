@@ -1,0 +1,14 @@
+[Unit]
+Description=Gaafu TV HLS ladder (SRT in, 1080p/720p/360p out)
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/gaafu-ladder.env
+ExecStart=/opt/gaafu-tv/stream/ladder.sh
+Restart=always
+RestartSec=2
+User=www-data
+# The encoder exits when vMix disconnects. Restart brings it back to wait for the next connection.
+
+[Install]
+WantedBy=multi-user.target

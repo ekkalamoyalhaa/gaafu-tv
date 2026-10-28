@@ -1,0 +1,30 @@
+[Unit]
+Description=Gaafu TV stream source switch
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/gaafu-switch
+EnvironmentFile=/etc/gaafu-switch.env
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=2
+User=www-data
+Group=www-data
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/gaafu-switch/data
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+SystemCallFilter=@system-service
+MemoryDenyWriteExecute=true
+UMask=027
+
+[Install]
+WantedBy=multi-user.target
